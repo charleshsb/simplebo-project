@@ -1,12 +1,16 @@
-.navbar-lewagon {
+.navbar-simplebo {
+  height: 10vh;
+  background: rgb(39, 46, 66);
+}
+
+.navbar-simplebo-flex {
+  display: flex;
   justify-content: space-between;
-  background: white;
+  align-items: center;
+  height: 100%;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-simplebo a {
+  color: rgb(78, 193, 202);
+  text-decoration: none;
 }
