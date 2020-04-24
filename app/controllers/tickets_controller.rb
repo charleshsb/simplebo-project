@@ -9,7 +9,7 @@ class TicketsController < ApplicationController
     if params[:query].present?
       @tickets = Ticket.search_by_title_and_address(params[:query])
     else
-      @tickets = Ticket.all
+      @tickets = Ticket.where(done:false)
     end
   end
 

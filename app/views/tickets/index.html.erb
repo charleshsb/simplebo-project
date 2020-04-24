@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Open tickets</h1>
+  <% @tickets.each do |ticket| %>
+    <%= link_to(ticket_path(ticket)) do  %>
+      <div class="card-product">
+        <img src="https://images.unsplash.com/photo-1513265472937-50d3e680377c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2849&q=80" />
+        <div class="card-product-infos">
+          <h2><%= ticket.title %></h2>
+          <p><%= ticket.description %></p>
+          <p>Ticket master : <%= ticket.user.first_name %></p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
