@@ -3,14 +3,37 @@
   <div class="ticket-info mb-4">
     <span>Ticket master : <%= @ticket.user.first_name %></span>
     <span>Creation : <%= @ticket.created_at %></span>
-    <!-- pouvoir cloturer le ticket si on est en charge du ticket -->
+    <% if current_user == @ticket.user %>
+      <% if @ticket.done == false %>
+        <%= link_to "ticket solved?", ticket_path, data: { confirm: "Are you sure you want to close this ticket?" }, method: :patch, class: "btn btn-primary" %>
+      <% else %>
+        <div class="btn btn-primary">
+          <span>solved!</span>
+        </div>
+      <% end %>
+    <% end %>
   </div>
-  <div class="ticket-description">
+  <div class="ticket-description mb-4">
     <p>Description :</p>
     <%= @ticket.description %>
   </div>
-  <div class="comments">
-    <!-- une div avec le fil des commentaires -->
+  <div class="comments-box mb-4">
+    <p>Comments :</p>
+    <% @comments.each do |comment| %>
+      <div class="comment mb-4">
+        <span><%= comment.user.first_name %> at : <%= comment.created_at %> </span>
+        <p><%= comment.text %></p>
+      </div>
+    <% end %>
+    <div class="new-comment">
+      <p>Write a comment :</p>
+      <%= simple_form_for [@ticket, @comment] do |f| %>
+        <%= f.input :text %>
+        <%= f.submit class: "btn btn-primary mb-4" %>
+      <% end %>
+    </div>
   </div>
-  <!-- une deuxieme div avec le formulaire pour faire un nouveau commentaire -->
+  <div class="btn btn-primary">
+    <%= link_to "back to all tickets", tickets_path  %>
+  </div>
 </div>

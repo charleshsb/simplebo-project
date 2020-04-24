@@ -5,7 +5,7 @@
 .card-product {
   overflow: hidden;
   height: 120px;
-  background: white;
+  background: $white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
@@ -35,6 +35,21 @@
   align-items: center;
   height: 50px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  background: white;
+  background: $white;
   border-radius: 10px;
+}
+
+.comments-box {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background: $white;
+  border-radius: 10px;
+  width: 50%;
+  margin: auto;
+}
+
+.comment {
+  border: 1px solid $pacific-blue;
+  border-radius: 10px;
+  width: 90%;
+  margin: auto;
 }
