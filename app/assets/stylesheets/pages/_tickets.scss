@@ -1,3 +1,7 @@
+.index-title {
+  text-align: center;
+}
+
 .card-product {
   overflow: hidden;
   height: 120px;
@@ -11,12 +15,26 @@
 .card-product img {
   height: 100%;
   width: 120px;
-  object-fit: cover;
+  object-fit: fill;
 }
 
 .card-product .card-product-infos {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
+}
+
+.tickets {
+  text-align: center;
+}
+
+.ticket-info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background: white;
+  border-radius: 10px;
 }
