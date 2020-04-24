@@ -9,12 +9,13 @@ class TicketsController < ApplicationController
     if params[:query].present?
       @tickets = Ticket.search_by_title_and_address(params[:query])
     else
-      @tickets = Ticket.where(done:false)
+      @tickets = Ticket.where(done: false)
     end
   end
 
   def show
     @ticket = Ticket.find(params[:id])
+    @comments = Comment.where(ticket: @ticket)
   end
 
   def destroy

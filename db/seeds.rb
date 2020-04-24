@@ -21,4 +21,11 @@ ticket_5.save
 ticket_6 = Ticket.new(title:"Issue 6", description:"please help me with DB", done:false, user: sophie)
 ticket_6.save
 
+comment_1 = Comment.new(text:"I will investigate", user: jeremy, ticket: ticket_1)
+comment_1.save
+comment_2 = Comment.new(text:"It is harder than I tought", user: jeremy, ticket: ticket_1)
+comment_2.save
+comment_3 = Comment.new(text:"It is almost solved", user: jeremy, ticket: ticket_1)
+comment_3.save
+
 puts "seed completed"
