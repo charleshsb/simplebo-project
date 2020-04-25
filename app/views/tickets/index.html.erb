@@ -1,14 +1,17 @@
 <div class="container">
   <h1 class="index-title m-4">Open tickets</h1>
+  <%= form_tag tickets_path, method: :get do %>
+    <%= text_field_tag :query, params[:query],placeholder: "Find a ticket by its description", class: "search-bar"%>
+  <% end %>
   <% @tickets.each do |ticket| %>
     <%= link_to(ticket_path(ticket)) do  %>
       <div class="card-product">
         <img src="https://images.unsplash.com/photo-1513265472937-50d3e680377c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2849&q=80" />
         <div class="card-product-infos">
-          <p><%= ticket.title %></p>
+          <p id="card-title"><%= ticket.title %></p>
           <p>Ticket master : <%= ticket.user.first_name %></p>
           <p>Ticket creation : <%= ticket.created_at %></p>
-          <!-- rajouter le nombre de commentaires -->
+          <p>Number of comments : <%= ticket.comments.count %></p>
         </div>
       </div>
     <% end %>

@@ -1,13 +1,25 @@
 class TicketsController < ApplicationController
   def create
-    # @ticket = Ticket.new(passer les faker)
-    # @ticket.user = mettre le user qui a le moins de tickets
+    require 'faker'
+    @ticket = Ticket.new(
+      title: Faker::Hacker.abbreviation,
+      description: Faker::Hacker.say_something_smart
+    )
+    # peut etre autre possibilite avec user.tickets.count
+    tickets = Ticket.all
+    tickets_by_user = Hash.new(0)
+    tickets.each do |ticket|
+      tickets_by_user[ticket.user_id] += 1
+    end
+    user_available = tickets_by_user.sort_by { |key, value| value }.first
+    user_id = user_available.keys[0]
+    @ticket.user = User.where(id: user_id)
     @ticket.save
   end
 
   def index
     if params[:query].present?
-      @tickets = Ticket.search_by_title_and_address(params[:query])
+      @tickets = Ticket.search_by_description(params[:query])
     else
       @tickets = Ticket.where(done: false)
     end
