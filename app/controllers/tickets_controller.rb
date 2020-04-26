@@ -15,6 +15,8 @@ class TicketsController < ApplicationController
     user_id = user_available.keys[0]
     @ticket.user = User.where(id: user_id)
     @ticket.save
+    @link = "https://simplebo-project.herokuapp.com/tickets/#{@ticket.id}"
+    ApplicationMailer.post_email(@ticket.user, @link).deliver
   end
 
   def index

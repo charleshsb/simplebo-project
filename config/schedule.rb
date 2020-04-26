@@ -19,5 +19,6 @@
 
 # Learn more: http://github.com/javan/whenever
 every 5.minutes do
-  runner "Ticket.create"
+  proba = [1,2,3].sample
+  runner "Ticket.create", mailto: "@ticket.user.email" if proba == 1
 end
