@@ -19,6 +19,5 @@
 
 # Learn more: http://github.com/javan/whenever
 every 5.minutes do
-  proba = [1,2,3].sample
-  runner "Ticket.create" if proba == 1
+  runner "proba = [1,2,3].sample; Ticket.create if proba == 1"
 end
