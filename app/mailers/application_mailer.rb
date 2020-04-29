@@ -1,6 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
   default from: 'from@example.com'
-  layout 'mailer'
 
   def post_email(user, link)
     @user = user

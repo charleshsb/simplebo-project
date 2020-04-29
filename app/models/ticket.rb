@@ -25,7 +25,7 @@ class Ticket < ApplicationRecord
     user_ok = User.find(user_id)
     ticket.user = user_ok
     ticket.save
-    # @link = "https://simplebo-project.herokuapp.com/tickets/#{@ticket.id}"
-    # ApplicationMailer.post_email(@ticket.user, @link).deliver
+    link = "https://simplebo-project.herokuapp.com/tickets/#{ticket.id}"
+    ApplicationMailer.post_email(ticket.user, link).deliver
   end
 end
