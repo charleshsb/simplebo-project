@@ -1,24 +1,4 @@
 class TicketsController < ApplicationController
-  def create
-    require 'faker'
-    @ticket = Ticket.new(
-      title: Faker::Hacker.abbreviation,
-      description: Faker::Hacker.say_something_smart
-    )
-    # peut etre autre possibilite avec user.tickets.count
-    tickets = Ticket.all
-    tickets_by_user = Hash.new(0)
-    tickets.each do |ticket|
-      tickets_by_user[ticket.user_id] += 1
-    end
-    user_available = tickets_by_user.sort_by { |key, value| value }.first
-    user_id = user_available.keys[0]
-    @ticket.user = User.where(id: user_id)
-    @ticket.save
-    @link = "https://simplebo-project.herokuapp.com/tickets/#{@ticket.id}"
-    ApplicationMailer.post_email(@ticket.user, @link).deliver
-  end
-
   def index
     if params[:query].present?
       @tickets = Ticket.search_by_description(params[:query])
