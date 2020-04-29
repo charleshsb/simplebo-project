@@ -1,10 +1,7 @@
 <div class="container">
   <h1 class="index-title m-4">Open tickets</h1>
-  <%= form_tag tickets_path, method: :get do %>
-    <%= text_field_tag :query, params[:query],placeholder: "Find a ticket by its description", class: "search-bar"%>
-  <% end %>
 
-  <input type="text" id="search-bar"/>
+  <input type="text" id="search-bar" class="index-title mb-4" placeholder="Find a ticket" />
   <% @tickets.each do |ticket| %>
     <%= link_to(ticket_path(ticket)) do  %>
       <div class="cards">
